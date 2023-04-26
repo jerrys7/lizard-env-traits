@@ -3,7 +3,6 @@
 # read in phenotype-environment data
 d <- read.csv("clean_pca_phenotype-enviro.csv", header = T, stringsAsFactors = F)
 head(d)
-print("ok")
 rownames(d) <- d$island
 d3 <- read.csv("clean_phenotype-enviro-morph.csv", header = T, stringsAsFactors = F)
 head(d3)
@@ -28,8 +27,7 @@ head(residuals)
 
 pca <- prcomp(d[, 2:ncol(d) ])
 # the 2:ncol(morph2) just gets rid of the annoying X column 
-install.packages("factoextra")
-install.packages("RColorBrewer")
+
 library('factoextra', 'RColorBrewer')
 # fviz_pca_ind(pca)
 myplot <- fviz_pca_var(pca,
@@ -92,4 +90,3 @@ for ( i in unique(d3$morph[d3$island %in% rownames(d) == TRUE]) ){
   col <- col + 2
 }
 dev.off()
-
